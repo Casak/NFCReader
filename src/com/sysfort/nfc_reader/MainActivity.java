@@ -317,7 +317,7 @@ public class MainActivity extends Activity {
 	}
     public void sendfile(View v)
 	{
-
+		sendFileToServer();
 		finish();
 		Log.d( "onTriggerDefenceClick ","Om click");
 		
@@ -348,6 +348,25 @@ public class MainActivity extends Activity {
 		//  startActivity(intent);
 		
 	}
+	
+	public void sendFileToServer() {
+		final String successResponse = "[{\"success\":\"1\",\"msg\":\"Record successfully inserted\"}]".intern();
+		final String failResponse = "[{\"success\":\"2\",\"msg\":\"Record Not inserted\"}]".intern();
+		SenderTask task = new SenderTask(new SenderTask.AsyncResponse() {
+			@Override
+			public void processFinish(String output) {
+				if (output.equals(successResponse)) {
+					Log.d("Data inserted", ", service response is: " + output);
+				}
+				else if (output.equals(failResponse))
+					Log.d("Data not inserted", ", service response is: " + output);
+				else
+					Log.d("Inserting data problem" , ", service response is: " + output);
+			}
+		});
+		task.execute();
+	}
+	
     public void aboutus(View v)
 	{
 		finish();
