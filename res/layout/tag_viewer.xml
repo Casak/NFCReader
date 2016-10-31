@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+   
+
+    <LinearLayout
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tag_viewer_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:autoLink="email|web"
+           android:textSize="14dp"
+            android:gravity="center_horizontal"
+            android:text="" />
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/relImg"
+       
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp"
+    android:layout_below="@+id/LLhigher"
+    android:layout_above="@+id/liAddDelete"
+     
+        >
+        
+    <ImageView
+        android:id="@+id/imageView"
+       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    
+        android:src="@drawable/scanfront" />
+
+</LinearLayout>
+    <RelativeLayout 
+	    android:id="@+id/rltvBottomLayer"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    >
+	<Button
+	    android:id="@+id/BtnSave"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	   
+		android:layout_centerInParent="true"
+	    android:text=" SAVE "
+	    android:textSize="18sp"
+	    android:textColor="#FFFFFF"
+	    android:layout_margin="4dp"
+	    android:textStyle="bold"
+	    android:onClick="onSaveClick"/>
+	
+	
+	
+
+	</RelativeLayout>
+  
+    </RelativeLayout>

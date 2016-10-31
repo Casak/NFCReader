@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+       android:text="Enter your details"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:padding="10dp"
+        android:textStyle="bold" />
+- 
+
+    <LinearLayout
+        android:id="@+id/linearInstTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+          android:hint="Enter name"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+             android:background="@drawable/edit_text"
+               style="@style/edit_style"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp"
+          android:textColor="#000000"
+       android:textColorHint="#666666"
+          
+            />
+        
+        
+        
+        <EditText
+            android:id="@+id/edtNO"
+            android:layout_width="fill_parent"
+          android:layout_height="40dp"
+           android:hint="Enter  employee ID"
+           android:contentDescription=""
+            android:imeOptions="actionDone"
+            android:background="@drawable/edit_text"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp"
+         android:layout_marginTop="10dp"
+        style="@style/edit_style"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"
+           android:textColorHint="#666666"
+           />
+
+        <Button
+            android:id="@+id/btnDialogOk"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="SAVE"
+            android:textColor="#FFFFFF"
+          
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
