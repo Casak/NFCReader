@@ -12,6 +12,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
@@ -27,6 +29,8 @@ import java.util.Scanner;
 
 
 public class SenderTask extends AsyncTask<String, String, String> {
+    private static final int CONNECTION_TIMEOUT = 10000;
+    private static final int WAIT_RESPONSE_TIMEOUT = 10000;
     private static String TAG = SenderTask.class.getSimpleName();
     public AsyncResponse delegate = null;
 
@@ -44,6 +48,10 @@ public class SenderTask extends AsyncTask<String, String, String> {
 
         List<HttpPost> httpPostList;
         HttpClient httpclient = new DefaultHttpClient();
+        HttpParams httpParameters = httpclient.getParams();
+        HttpConnectionParams.setConnectionTimeout(httpParameters, CONNECTION_TIMEOUT);
+        HttpConnectionParams.setSoTimeout(httpParameters, WAIT_RESPONSE_TIMEOUT);
+        HttpConnectionParams.setTcpNoDelay(httpParameters, true);
 
         String fileName = "nfcread.csv";
         String path = Environment.getExternalStorageDirectory() + "/NFC/" + fileName;
@@ -52,7 +60,6 @@ public class SenderTask extends AsyncTask<String, String, String> {
 
         try {
             httpPostList = fetchDataFromFileToHttpResponce(mFile);
-
             for(HttpPost post : httpPostList){
                 HttpResponse response = httpclient.execute(post);
                 InputStream inputStream = response.getEntity().getContent();
@@ -71,7 +78,6 @@ public class SenderTask extends AsyncTask<String, String, String> {
         FileInputStream fileInputStream = new FileInputStream(file);
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream));
         String line;
-
         if (reader.readLine() != null)  //Skip file header
             while ((line = reader.readLine()) != null) {
                 String[] RowData = line.split(",");
@@ -90,7 +96,6 @@ public class SenderTask extends AsyncTask<String, String, String> {
                                 RowData[9])));
                 result.add(httppost);
             }
-
         reader.close();
         fileInputStream.close();
 
